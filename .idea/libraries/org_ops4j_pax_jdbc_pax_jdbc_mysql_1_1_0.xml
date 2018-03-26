@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.ops4j.pax.jdbc:pax-jdbc-mysql:1.1.0" type="repository">
+    <properties maven-id="org.ops4j.pax.jdbc:pax-jdbc-mysql:1.1.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ops4j/pax/jdbc/pax-jdbc-mysql/1.1.0/pax-jdbc-mysql-1.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
