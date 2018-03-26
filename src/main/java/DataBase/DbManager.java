@@ -50,7 +50,7 @@ public class DbManager {
     }
 
     /** Вывод таблицы */
-    public static void showTable(){
+    public static ArrayList<String> showTable(){
         try {
             connectionTable();
             ps = conn.prepareStatement("SELECT * FROM enemies");
@@ -67,11 +67,13 @@ public class DbManager {
 
                 tableList.add(resultSet.getString("name"));
             }
+            return tableList;
 
         } catch (Exception e){
             System.out.println(e);
         } finally {
             System.out.println("Вывод данных таблицы завершен.");
         }
+        return null;
     }
 }
