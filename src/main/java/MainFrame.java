@@ -9,12 +9,14 @@ public class MainFrame extends JFrame {
     JScrollPane scroll = new JScrollPane(table);
 
     JButton butAdd = new JButton("+");
-    JButton butRefresh = new JButton("refresh");
+    JButton butRefresh = new JButton("Обновить");
     JButton butDelete = new JButton("-");
+    JButton butDeleteAll = new JButton("Очистить");
 
     JLabel labelSpace1 = new JLabel("       ");
     JLabel labelSpace2 = new JLabel("       ");
     JLabel labelSpace3 = new JLabel("       ");
+    JLabel labelSpace4 = new JLabel("       ");
 
     public void ourFrame(){
 
@@ -44,13 +46,19 @@ public class MainFrame extends JFrame {
         c.gridx = 4;
         c.gridy = 0;
         panelBottom.add(butDelete, c);
+        c.gridx = 5;
+        c.gridy = 0;
+        panelBottom.add(labelSpace3, c);
+        c.gridx = 6;
+        c.gridy = 0;
+        panelBottom.add(butDeleteAll, c);
 
         c.gridx = 0;
         c.gridy = 0;
         panelMain.add(scroll, c);
         c.gridx = 0;
         c.gridy = 1;
-        panelMain.add(labelSpace3, c);
+        panelMain.add(labelSpace4, c);
         c.gridx = 0;
         c.gridy = 2;
         panelMain.add(panelBottom, c);

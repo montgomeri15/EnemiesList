@@ -36,11 +36,29 @@ public class DbManager {
         }
     }
 
+    /** Проверка на заполненность */
+    /*public static void checkTable(){
+        try {
+            connectionTable();
+            ps = conn.prepareStatement("SELECT * FROM enemies");
+            resultSet = ps.executeQuery();
+
+            if (resultSet.getString("id").equals(null)){
+                ps = conn.prepareStatement("TRUNCATE TABLE enemies");
+                ps.executeUpdate();
+            } else {
+            }
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
+
+    }*/
+
     /** Добавление информации */
     public static void fillTable(){
         try {
             connectionTable();
-            //ps = conn.prepareStatement("ALTER TABLE enemies AUTO_INCREMENT=0");
             ps = conn.prepareStatement("INSERT INTO enemies(name) VALUE('me')");
             ps.executeUpdate();
         } catch (Exception e){
@@ -76,5 +94,18 @@ public class DbManager {
             System.out.println("Вывод данных таблицы завершен.");
         }
         return null;
+    }
+
+    /** Очищение таблицы */
+    public static void cleanTable(){
+        try {
+            connectionTable();
+            ps = conn.prepareStatement("TRUNCATE TABLE enemies");
+            ps.executeUpdate();
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            System.out.println("Очищение таблицы завершено.");
+        }
     }
 }

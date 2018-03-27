@@ -6,12 +6,14 @@ public class Main {
 
         DbManager dbManager = new DbManager();
 
-        //dbManager.createTable();
-        //dbManager.fillTable();
-        //dbManager.showTable();
+        dbManager.createTable();
+        //dbManager.checkTable();
+        dbManager.fillTable();
+        dbManager.showTable();
+        dbManager.cleanTable();
 
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.ourFrame();
+        //MainFrame mainFrame = new MainFrame();
+        //mainFrame.ourFrame();
 
     }
 }
