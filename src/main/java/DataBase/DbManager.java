@@ -40,6 +40,7 @@ public class DbManager {
     public static void fillTable(){
         try {
             connectionTable();
+            //ps = conn.prepareStatement("ALTER TABLE enemies AUTO_INCREMENT=0");
             ps = conn.prepareStatement("INSERT INTO enemies(name) VALUE('me')");
             ps.executeUpdate();
         } catch (Exception e){
