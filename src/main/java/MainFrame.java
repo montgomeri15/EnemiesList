@@ -31,6 +31,16 @@ public class MainFrame extends JFrame {
 
         scroll.setPreferredSize(new Dimension(400,400));  //размер таблицы (JScrollPane)
 
+        /** Заполняем таблицу */
+        String []str = new String[3];
+        str[0]="1";
+        str[1]="me";
+        str[2]="true";
+
+        for (int i=0; i<3; i++){
+            tableModel.addDate(str);  //Добавляем в модель таблицы
+        }
+
         panelMain.setLayout(new GridBagLayout());
         panelBottom.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

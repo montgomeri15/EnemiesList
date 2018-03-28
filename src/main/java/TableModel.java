@@ -38,7 +38,6 @@ public class TableModel extends AbstractTableModel {
 
     public void addDate(String[]row){  //Передаем массив строк для каждой i-той ячейки
         String [] rowTable = row;  //Мы можем передать в метод любой массив
-
         dataArrayList.add(rowTable);  //Добавили 1 строку таблицы
     }
 }
