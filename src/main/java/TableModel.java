@@ -1,4 +1,8 @@
+import DataBase.DbManager;
+
 import javax.swing.table.AbstractTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class TableModel extends AbstractTableModel {
@@ -36,8 +40,29 @@ public class TableModel extends AbstractTableModel {
         return rows[columnIndex];  //Возвращает i-тый столбец
     }
 
-    public void addDate(String[]row){  //Передаем массив строк для каждой i-той ячейки
+    public void addData(String[]row){  //Передаем массив строк для каждой i-той ячейки
         String [] rowTable = row;  //Мы можем передать в метод любой массив
         dataArrayList.add(rowTable);  //Добавили 1 строку таблицы
+    }
+
+    public void addData(DbManager dbManager){
+
+        try {
+            ResultSet resultSet = dbManager.resultSetQuery("SELECT * FROM enemies");
+
+            while (resultSet.next()){
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String status = resultSet.getString("status");
+
+                String []row = {id, name, status};
+
+                addData(row);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
     }
 }

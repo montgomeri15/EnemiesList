@@ -1,3 +1,5 @@
+import DataBase.DbManager;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,7 +26,7 @@ public class MainFrame extends JFrame {
 
         setTitle("Список врагов");
         setSize(550,550);
-        setResizable(false);
+        //setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -32,14 +34,15 @@ public class MainFrame extends JFrame {
         scroll.setPreferredSize(new Dimension(400,400));  //размер таблицы (JScrollPane)
 
         /** Заполняем таблицу */
-        String []str = new String[3];
+        /*String []str = new String[3];
         str[0]="1";
         str[1]="me";
-        str[2]="true";
+        str[2]="true";*/
 
-        for (int i=0; i<3; i++){
-            tableModel.addDate(str);  //Добавляем в модель таблицы
-        }
+        DbManager dbManager = new DbManager();
+        dbManager.createTable();
+        dbManager.fillTable();
+        tableModel.addData(dbManager);  //Добавляем в модель таблицы
 
         panelMain.setLayout(new GridBagLayout());
         panelBottom.setLayout(new GridBagLayout());

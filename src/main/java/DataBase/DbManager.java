@@ -1,24 +1,21 @@
 package DataBase;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DbManager {
 
     protected static Connection conn;
+    protected static Statement statement;
     protected static PreparedStatement ps;
     protected static ResultSet resultSet;
 
     /** Подключение БД */
-    protected static Connection connectionTable(){
+    public static Connection connectionTable(){
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/location", "root", "root");
-            System.out.println("База данных подключена.");
-        } catch (Exception e){
-            System.out.println(e);
+        } catch (SQLException e){
+            e.printStackTrace();
         }
         return conn;
     }
@@ -29,8 +26,8 @@ public class DbManager {
             connectionTable();
             ps = conn.prepareStatement("CREATE TABLE IF NOT EXISTS enemies(id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255) NOT NULL, status BOOLEAN DEFAULT TRUE)");
             ps.executeUpdate();
-        } catch (Exception e){
-            System.out.println(e);
+        } catch (SQLException e){
+            e.printStackTrace();
         } finally {
             System.out.println("Создание таблицы завершено.");
         }
@@ -61,8 +58,8 @@ public class DbManager {
             connectionTable();
             ps = conn.prepareStatement("INSERT INTO enemies(name) VALUE('me')");
             ps.executeUpdate();
-        } catch (Exception e){
-            System.out.println(e);
+        } catch (SQLException e){
+            e.printStackTrace();
         } finally {
             System.out.println("Заполнение таблицы завершено.");
         }
@@ -88,8 +85,8 @@ public class DbManager {
             }
             return tableList;
 
-        } catch (Exception e){
-            System.out.println(e);
+        } catch (SQLException e){
+            e.printStackTrace();
         } finally {
             System.out.println("Вывод данных таблицы завершен.");
         }
@@ -102,10 +99,23 @@ public class DbManager {
             connectionTable();
             ps = conn.prepareStatement("TRUNCATE TABLE enemies");
             ps.executeUpdate();
-        } catch (Exception e){
-            System.out.println(e);
+        } catch (SQLException e){
+            e.printStackTrace();
         } finally {
             System.out.println("Очищение таблицы завершено.");
         }
+    }
+
+    /** Для передачи данных в модель таблицы */
+    public ResultSet resultSetQuery(String query){
+        try {
+            connectionTable();
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(query);
+            return resultSet;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
