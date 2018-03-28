@@ -5,13 +5,15 @@ public class MainFrame extends JFrame {
 
     JPanel panelMain = new JPanel();
     JPanel panelBottom = new JPanel();
-    JTable table = new JTable();
+
+    TableModel tableModel = new TableModel();
+    JTable table = new JTable(tableModel);
     JScrollPane scroll = new JScrollPane(table);
 
-    JButton butAdd = new JButton("+");
-    JButton butRefresh = new JButton("Обновить");
-    JButton butDelete = new JButton("-");
-    JButton butDeleteAll = new JButton("Очистить");
+    JButton butAdd = new JButton("Add");
+    JButton butRefresh = new JButton("Refresh");
+    JButton butDelete = new JButton("Delete");
+    JButton butDeleteAll = new JButton("Clear");
 
     JLabel labelSpace1 = new JLabel("       ");
     JLabel labelSpace2 = new JLabel("       ");
@@ -26,6 +28,8 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+        scroll.setPreferredSize(new Dimension(400,400));  //размер таблицы (JScrollPane)
 
         panelMain.setLayout(new GridBagLayout());
         panelBottom.setLayout(new GridBagLayout());
