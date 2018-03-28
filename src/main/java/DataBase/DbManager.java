@@ -94,7 +94,7 @@ public class DbManager {
     }
 
     /** Очищение таблицы */
-    public static void cleanTable(){
+    public static void clearTable(){
         try {
             connectionTable();
             ps = conn.prepareStatement("TRUNCATE TABLE enemies");

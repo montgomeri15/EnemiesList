@@ -10,7 +10,7 @@ public class Main {
         //dbManager.checkTable();
         //dbManager.fillTable();
         //dbManager.showTable();
-        //dbManager.cleanTable();
+        //dbManager.clearTable();
 
         MainFrame mainFrame = new MainFrame();
         mainFrame.ourFrame();

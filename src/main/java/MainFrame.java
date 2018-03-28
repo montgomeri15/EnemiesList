@@ -1,7 +1,10 @@
 import DataBase.DbManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
 
@@ -15,7 +18,7 @@ public class MainFrame extends JFrame {
     JButton butAdd = new JButton("Add");
     JButton butRefresh = new JButton("Refresh");
     JButton butDelete = new JButton("Delete");
-    JButton butDeleteAll = new JButton("Clear");
+    JButton butClear = new JButton("Clear");
 
     JLabel labelSpace1 = new JLabel("       ");
     JLabel labelSpace2 = new JLabel("       ");
@@ -39,7 +42,7 @@ public class MainFrame extends JFrame {
         str[1]="me";
         str[2]="true";*/
 
-        DbManager dbManager = new DbManager();
+        final DbManager dbManager = new DbManager();
         dbManager.createTable();
         dbManager.fillTable();
         tableModel.addData(dbManager);  //Добавляем в модель таблицы
@@ -68,7 +71,7 @@ public class MainFrame extends JFrame {
         panelBottom.add(labelSpace3, c);
         c.gridx = 6;
         c.gridy = 0;
-        panelBottom.add(butDeleteAll, c);
+        panelBottom.add(butClear, c);
 
         c.gridx = 0;
         c.gridy = 0;
@@ -81,6 +84,13 @@ public class MainFrame extends JFrame {
         panelMain.add(panelBottom, c);
 
         add(panelMain);
+
+        butClear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dbManager.clearTable();
+
+            }
+        });
 
 
 
