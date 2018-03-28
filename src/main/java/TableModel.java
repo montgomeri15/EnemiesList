@@ -22,8 +22,18 @@ public class TableModel extends AbstractTableModel {
         return columnCount;
     }
 
-    public Object getValueAt(int rowIndex, int columnIndex) {
+    public String getColumnName(int columnIndex){
+        switch (columnIndex){
+            case 0: return "ID";
+            case 1: return "Name";
+            case 2: return "Status";
+        }
         return null;
+    }
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        String [] rows = dataArrayList.get(rowIndex);  //Получает i-тую строку
+        return rows[columnIndex];  //Возвращает i-тый столбец
     }
 
     public void addDate(String[]row){  //Передаем массив строк для каждой i-той ячейки
