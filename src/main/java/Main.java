@@ -12,8 +12,11 @@ public class Main {
         //dbManager.showTable();
         //dbManager.clearTable();
 
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.ourFrame();
+        //MainFrame mainFrame = new MainFrame();
+        //mainFrame.ourFrame();
+
+        AddForm addForm = new AddForm();
+        addForm.addFrame();
 
     }
 }
